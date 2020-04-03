@@ -1,9 +1,9 @@
-import { RouterState } from 'react-router-redux';
 import { LeaderboardReducer } from './modules/leaderboard/reducer';
 import { AppReducer } from './modules/app/reducer';
+import { RouterState } from 'connected-react-router';
 
 export type State = {
-  routerReducer: RouterState,
+  router: RouterState,
   leaderboardReducer: LeaderboardReducer,
   appReducer: AppReducer,
 };

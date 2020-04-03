@@ -1,26 +1,28 @@
 import { createStore, applyMiddleware, compose, combineReducers, Reducer } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { History } from 'history';
-import { State } from './types';
 import leaderboardReducer from './modules/leaderboard/reducer';
 import appReducer from './modules/app/reducer';
+import { State } from './types';
 
 // tslint:disable-next-line
 declare const window: any;
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const rootReducer: Reducer<State> = combineReducers({
-  routerReducer,
+
+const createRootReducer = (history: History): Reducer<State> => combineReducers({
+  router: connectRouter(history),
   leaderboardReducer,
   appReducer,
 });
+
 export default (history: History) => {
   const sagaMiddleware = createSagaMiddleware();
   const router = routerMiddleware(history);
   return {
     ...createStore(
-      rootReducer,
+      createRootReducer(history),
       composeEnhancers(
         applyMiddleware(sagaMiddleware),
         applyMiddleware(router),

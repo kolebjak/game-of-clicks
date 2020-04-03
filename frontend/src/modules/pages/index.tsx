@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Leaderboard from '../leaderboard';
-import { push, RouterAction } from 'react-router-redux';
+import { push, RouterAction } from 'connected-react-router';
 import { connect } from 'react-redux';
 
 export type Props = {
