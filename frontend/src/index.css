@@ -1,0 +1,136 @@
+html,
+body,
+#root {
+  height: 100%;
+  font-family: Arial;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  font-size: 30px;
+  font-weight: 300;
+}
+h2 {
+  font-size: 16px;
+  text-align: center;
+}
+.app {
+  background: #efefef;
+  height: 100%;
+  width: 100%;
+  min-height: 500px;
+}
+.page-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #3878de;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 800;
+}
+.page {
+  position: relative;
+  border: 3px solid #3878de;
+  border-radius: 10px;
+  background: #fff;
+  height: 450px;
+  width: 350px;
+}
+.clicks {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.clicks .clicks__clickCount {
+  font-size: 30px;
+  font-weight: bold;
+  color: #3878de;
+}
+.clicks .clicks__label {
+  font-style: italic;
+  font-size: 12px;
+}
+.leaderboard {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 12px;
+  font-weight: bold;
+}
+.leaderboard td.left,
+.leaderboard th.left {
+  text-align: left;
+}
+.leaderboard td.right,
+.leaderboard th.right {
+  text-align: right;
+}
+.leaderboard thead th {
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 10px;
+  padding: 5px 5px;
+}
+.leaderboard tbody td {
+  padding: 5px 5px;
+}
+.leaderboard tbody tr:nth-child(even) {
+  background: #d2e3f8;
+}
+.leaderboard tbody tr:nth-child(odd) {
+  background: #e7f0fc;
+}
+.leaderboard tbody tr.selected {
+  background: #3878de;
+  color: #fff;
+  font-size: 140%;
+}
+.leaderboard .selected {
+  background: red;
+}
+button.btn {
+  color: #fff;
+  background: #3878de;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+button.btn.btn--large {
+  font-size: 22px;
+  margin: 10px;
+  width: calc(100% - 20px);
+  padding: 15px 50px;
+}
+button.btn.btn--small {
+  font-size: 15px;
+  margin: 10px;
+  width: 150px;
+  padding: 10px 30px;
+}
+.teamNameForm {
+  margin: 10px;
+  padding-bottom: 15px;
+}
+.teamNameForm label {
+  font-size: 12px;
+  font-style: italic;
+}
+.teamNameForm .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
