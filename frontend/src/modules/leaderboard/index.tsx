@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as classNames from 'classnames';
+import React from 'react';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { FetchAction, fetchAction } from './actions';
 import { selectLeaderboard } from './reducer';
