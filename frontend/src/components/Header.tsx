@@ -11,5 +11,6 @@ const Header = styled.div`
   align-items: center;
   color: #fff;
   font-weight: 800;
+  cursor: pointer;
 `
 export default Header;

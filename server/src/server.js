@@ -1,40 +1,40 @@
 import mongoose from 'mongoose';
 import { ApolloServer, gql } from 'apollo-server';
 import leaderboard from "./modules/leaderboard";
-import click from "./modules/click";
+import addClick from "./modules/addClick";
+import getClick from "./modules/getClick";
 
 const typeDefs = gql`
   type Leaderboard {
+    id: ID
     team: String
-    clicks: Int
-  }
-  
-  type ClickCount {
-    team: Int
-    session: Int
+    teamCount: Int
   }
   
   type Click {
+    id: ID
     team: String
-    session: String
-    count: ClickCount
+    sessionCount: Int
+    teamCount: Int
   }
   
   type Query {
     leaderboard: [Leaderboard]
+    click(session: String, team: String): Click
   }
   
   type Mutation {
-    click(session: String, team: String): Click
+    addClick(session: String, team: String): Click
   }
 `;
 
 const resolvers = {
   Query: {
     leaderboard,
+    click: async (_, { session, team }) => getClick({ session, team }),
   },
   Mutation: {
-    click: async (_, { session, team }) => click({ session, team })
+    addClick: async (_, { session, team }) => addClick({ session, team })
   }
 };
 
