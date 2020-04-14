@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const PageContainer = styled.div`
   display: flex;
@@ -7,5 +7,5 @@ const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`
+`;
 export default PageContainer;

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "eslint": "eslint --ext .js src",
     "test": "echo \"Error: no test specified\" && exit 0",
     "start": "nodemon src/server.js --exec babel-node",
     "build": "babel src -d build --presets es2015,stage-2",
@@ -12,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",

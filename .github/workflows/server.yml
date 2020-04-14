@@ -28,6 +28,8 @@ jobs:
       working-directory: ./server
     - run: yarn build
       working-directory: ./server
+    - run: yarn eslint
+      working-directory: ./server
     - run: yarn test --passWithNoTests
       working-directory: ./server
       env:
