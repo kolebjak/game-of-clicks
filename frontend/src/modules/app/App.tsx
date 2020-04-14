@@ -1,28 +1,28 @@
-import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import IndexPage from '../pages/index';
-import TeamPage from '../pages/team';
-import '../../index.css';
-import { Routes } from '../routes';
+import React, {Suspense, lazy} from 'react';
+import {Route, Switch} from 'react-router-dom';
+import styled from 'styled-components';
+import {Routes} from '../routes';
+import Header from "./components/Header";
 
-type State = {
-  open: boolean;
-};
+const Wrapper = styled.div`
+  background: #efefef;
+  height: 100%;
+  width: 100%;
+  min-height: 500px;
+`
 
-type Props = {};
-
-class App extends React.Component<Props, State> {
-  render() {
+const App: React.FC = () => {
     return (
-      <div className="app">
-        <div className="header">STFUANDCLICK</div>
-        <Switch>
-          <Route path="/:teamName" component={TeamPage}/>
-          <Route path={Routes.home} component={IndexPage}/>
-        </Switch>
-      </div>
+        <Wrapper>
+            <Header>STFUANDCLICK</Header>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                    <Route path="/:teamName" component={lazy(() => import('../pages/team'))}/>
+                    <Route path={Routes.home} component={lazy(() => import('../pages/index'))}/>
+                </Switch>
+            </Suspense>
+        </Wrapper>
     );
-  }
 }
 
 export default App;
