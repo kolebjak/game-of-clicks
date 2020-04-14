@@ -34,7 +34,7 @@ jobs:
       working-directory: ./frontend
     - run: yarn build
       working-directory: ./frontend
-    - run: yarn test
+    - run: yarn test --passWithNoTests
       working-directory: ./frontend
       env:
         CI: true
