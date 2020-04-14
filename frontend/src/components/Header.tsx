@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Header = styled.div`
   position: absolute;
@@ -12,5 +12,5 @@ const Header = styled.div`
   color: #fff;
   font-weight: 800;
   cursor: pointer;
-`
+`;
 export default Header;
