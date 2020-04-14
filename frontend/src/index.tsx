@@ -9,6 +9,8 @@ import getSaga from './getSaga';
 import App from './modules/app/App';
 import { appMountedAction } from './modules/app/actions';
 
+import './index.css';
+
 const history = createHistory();
 const store = getStore(history);
 

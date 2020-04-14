@@ -30,8 +30,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn
       working-directory: ./frontend
-    - run: yarn build-css
-      working-directory: ./frontend
     - run: yarn build
       working-directory: ./frontend
     - run: yarn test --passWithNoTests
