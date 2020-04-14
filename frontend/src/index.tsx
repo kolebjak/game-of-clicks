@@ -23,8 +23,8 @@ const wsLink = new WebSocketLink({
 
 const httpLink = new HttpLink({
   uri: process.env.NODE_ENV === 'development'
-          ? 'http://localhost:3000'
-          : 'https://click-api.herokuapp.com',
+    ? 'http://localhost:3000'
+    : 'https://click-api.herokuapp.com',
 });
 
 const link = split(

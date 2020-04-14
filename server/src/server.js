@@ -33,7 +33,7 @@ const typeDefs = gql`
 `;
 
 const pubsub = new PubSub();
-const CLICK_ADDED = 'CLICK_ADDED'
+const CLICK_ADDED = 'CLICK_ADDED';
 
 const resolvers = {
   Subscription: {
