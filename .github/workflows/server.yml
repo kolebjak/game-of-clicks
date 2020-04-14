@@ -25,10 +25,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
-      working-directory: ./frontend
+      working-directory: ./server
     - run: yarn build
-      working-directory: ./frontend
+      working-directory: ./server
     - run: yarn test --passWithNoTests
-      working-directory: ./frontend
+      working-directory: ./server
       env:
         CI: true
