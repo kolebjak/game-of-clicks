@@ -7,8 +7,10 @@ This game was originally a dev test but i felt like expanding it. Let's see what
 
 - [x] Get rid of less styles 
 - [x] Rewrite to GraphQL
-- [ ] Use GraphQL subscriptions
-- [ ] Add prettier, eslint
+- [x] Use GraphQL subscriptions
+    - [ ] Code cleanup after first implementation
+- [x] Add eslint
+- [ ] Add prettier
 - [ ] Use typescript on backend
 
 ## Frontend
