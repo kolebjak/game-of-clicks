@@ -1,29 +1,23 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import createHistory from 'history/createBrowserHistory';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import getStore from './getStore';
-import getSaga from './getSaga';
-
-import App from './modules/app/App';
-import { appMountedAction } from './modules/app/actions';
+import {ApolloProvider} from '@apollo/react-hooks';
+import {BrowserRouter} from 'react-router-dom'
+import App from './App';
+import ApolloClient from 'apollo-boost';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import './index.css';
 
-const history = createHistory();
-const store = getStore(history);
-
-store.runSaga(getSaga());
+const client = new ApolloClient({
+    uri: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://click-api.herokuapp.com',
+    cache: new InMemoryCache({ dataIdFromObject: (object) => object.id }),
+});
 
 ReactDOM.render(
-  <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <App/>
-      </ConnectedRouter>
-    </Provider>,
-  document.getElementById('root') as HTMLElement,
-  () => {
-      store.dispatch(appMountedAction());
-  }
+    <ApolloProvider client={client}>
+        <BrowserRouter>
+            <App/>
+        </BrowserRouter>
+    </ApolloProvider>,
+    document.getElementById('root')
 );

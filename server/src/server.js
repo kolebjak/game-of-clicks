@@ -1,21 +1,48 @@
-import express from 'express';
 import mongoose from 'mongoose';
-import Router from './router';
+import { ApolloServer, gql } from 'apollo-server';
+import leaderboard from "./modules/leaderboard";
+import addClick from "./modules/addClick";
+import getClick from "./modules/getClick";
 
-const app = express();
+const typeDefs = gql`
+  type Leaderboard {
+    id: ID
+    team: String
+    teamCount: Int
+  }
+  
+  type Click {
+    id: ID
+    team: String
+    sessionCount: Int
+    teamCount: Int
+  }
+  
+  type Query {
+    leaderboard: [Leaderboard]
+    click(session: String, team: String): Click
+  }
+  
+  type Mutation {
+    addClick(session: String, team: String): Click
+  }
+`;
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+const resolvers = {
+  Query: {
+    leaderboard,
+    click: async (_, { session, team }) => getClick({ session, team }),
+  },
+  Mutation: {
+    addClick: async (_, { session, team }) => addClick({ session, team })
+  }
+};
 
-app.use('/', Router);
-
+const server = new ApolloServer({ typeDefs, resolvers });
 const port = Number(process.env.PORT || 3000);
 
-app.listen(port, () => {
-  console.log(`Express server listening on port ${port}`);
+server.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
   mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/stfuandclick');
 });
 
