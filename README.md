@@ -9,6 +9,7 @@ This game was originally a dev test but i felt like expanding it. Let's see what
 - [x] Rewrite to GraphQL
 - [ ] Use GraphQL subscriptions
 - [ ] Add prettier, eslint
+- [ ] Use typescript on backend
 
 ## Frontend
 Running on `https://click-fe.herokuapp.com/`
