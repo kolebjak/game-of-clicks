@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { ApolloServer, gql } from 'apollo-server';
-import leaderboard from "./modules/leaderboard";
-import addClick from "./modules/addClick";
-import getClick from "./modules/getClick";
+import leaderboard from './modules/leaderboard';
+import addClick from './modules/addClick';
+import getClick from './modules/getClick';
 
 const typeDefs = gql`
   type Leaderboard {

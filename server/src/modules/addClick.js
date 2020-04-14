@@ -1,10 +1,10 @@
 import Click from '../model/Click';
-import getClick from "./getClick";
+import getClick from './getClick';
 
 export const create = async (team, session) => new Promise((resolve, reject) => {
   Click.create({ team, session }, (error, user) => {
     if (error) {
-      reject(error)
+      reject(error);
     }
     resolve(user);
   });
