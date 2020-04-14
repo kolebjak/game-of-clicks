@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { useParams } from 'react-router-dom';
 import { Row, Table } from './components/Table';
+import { useSubscription } from '@apollo/react-hooks';
+
 
 export const LEADERBOARD_QUERY = gql`
   query Leaderboard {
@@ -14,7 +16,19 @@ export const LEADERBOARD_QUERY = gql`
   }
 `;
 
+export const SUBSCRIPTION = gql`
+  subscription ClickAdded {
+    clickAdded {
+      id
+      team
+      teamCount
+    }
+  }
+`;
+
 const Leaderboard: React.FC = () => {
+  useSubscription(SUBSCRIPTION);
+
   const { teamName } = useParams();
   const { data, loading, error } = useQuery(LEADERBOARD_QUERY);
 

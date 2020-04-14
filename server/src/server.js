@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql, PubSub } from 'apollo-server';
 import leaderboard from './modules/leaderboard';
 import addClick from './modules/addClick';
 import getClick from './modules/getClick';
@@ -18,6 +18,10 @@ const typeDefs = gql`
     teamCount: Int
   }
   
+  type Subscription {
+    clickAdded: Click
+  }
+  
   type Query {
     leaderboard: [Leaderboard]
     click(session: String, team: String): Click
@@ -28,18 +32,31 @@ const typeDefs = gql`
   }
 `;
 
+const pubsub = new PubSub();
+const CLICK_ADDED = 'CLICK_ADDED';
+
 const resolvers = {
+  Subscription: {
+    clickAdded: {
+      subscribe: () => pubsub.asyncIterator([CLICK_ADDED]),
+    },
+  },
   Query: {
     leaderboard,
     click: async (_, { session, team }) => getClick({ session, team }),
   },
   Mutation: {
-    addClick: async (_, { session, team }) => addClick({ session, team })
+    addClick: async (_, { session, team }) => {
+      const click = await addClick({ session, team });
+      pubsub.publish(CLICK_ADDED, { clickAdded: click });
+      return click;
+    }
   }
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
 const port = Number(process.env.PORT || 3000);
+
 
 server.listen(port, () => {
   console.log(`Server listening on port ${port}`);

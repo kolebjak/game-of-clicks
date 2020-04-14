@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import Button, { ButtonSize } from './components/Button';
 import Page from './components/Page';
 import PageContainer from './components/PageContainer';
-import Leaderboard, { LEADERBOARD_QUERY } from './Leaderboard';
+import Leaderboard from './Leaderboard';
 import SessionContext from './context';
 
 const Clicks = styled.div`
@@ -64,7 +64,7 @@ const TeamPage: React.FC = () => {
   });
   const [addClick] = useMutation(MUTATION, {
     variables: { team: teamName, session },
-    refetchQueries: [{ query: LEADERBOARD_QUERY }],
+    // refetchQueries: [{ query: LEADERBOARD_QUERY }],
   });
 
   if (loading) {
