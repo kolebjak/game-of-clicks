@@ -15,7 +15,9 @@ import { getMainDefinition } from 'apollo-utilities';
 
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:3000/graphql',
+  uri: process.env.NODE_ENV === 'development'
+    ? 'ws://localhost:3000/graphql'
+    : 'ws://click-api.herokuapp.com/graphq;',
   options: {
     reconnect: true,
   },
