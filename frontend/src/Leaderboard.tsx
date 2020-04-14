@@ -4,7 +4,7 @@ import {gql} from "apollo-boost";
 import {useParams} from "react-router-dom";
 import {Row, Table} from "./components/Table";
 
-const QUERY = gql`
+export const LEADERBOARD_QUERY = gql`
     query Leaderboard {
         leaderboard {
             id
@@ -16,7 +16,7 @@ const QUERY = gql`
 
 const Leaderboard: React.FC = () => {
     const { teamName } = useParams();
-    const { data, loading, error } = useQuery(QUERY)
+    const { data, loading, error } = useQuery(LEADERBOARD_QUERY)
 
     if(loading){
         return <div>loading</div>

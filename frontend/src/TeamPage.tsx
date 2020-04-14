@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Leaderboard from './Leaderboard';
+import Leaderboard, {LEADERBOARD_QUERY} from './Leaderboard';
 import PageContainer from "./components/PageContainer";
 import Page from "./components/Page";
 import styled from "styled-components";
@@ -60,7 +60,7 @@ const TeamPage: React.FC = () => {
     const session = useContext(SessionContext);
 
     const {data, loading, error} = useQuery(QUERY, {variables: {team: teamName, session}})
-    const [addClick] = useMutation(MUTATION, {variables: {team: teamName, session}})
+    const [addClick] = useMutation(MUTATION, {variables: {team: teamName, session}, refetchQueries: [{ query: LEADERBOARD_QUERY }]})
 
     if(loading){
         return <div>loading</div>
