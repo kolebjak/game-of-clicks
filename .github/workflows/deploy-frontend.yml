@@ -15,4 +15,4 @@ jobs:
       working-directory: ./frontend
     - run: ./_scripts/heroku_deploy.sh frontend click-fe
       env:
-        CI: true
+        HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
