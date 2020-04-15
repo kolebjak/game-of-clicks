@@ -29,6 +29,5 @@ jobs:
       working-directory: ./frontend
     - run: yarn test --passWithNoTests
       working-directory: ./frontend
-    - run: ./scripts/heroku-deploy.sh frontend click-fe
       env:
         CI: true
