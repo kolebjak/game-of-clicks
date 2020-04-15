@@ -54,7 +54,7 @@ const resolvers = {
   }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ cors: true, typeDefs, resolvers });
 const port = Number(process.env.PORT || 3000);
 
 
