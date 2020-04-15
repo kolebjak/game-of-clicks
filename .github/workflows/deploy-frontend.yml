@@ -1,0 +1,18 @@
+name: Deploy frontend
+    
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: yarn
+      working-directory: ./frontend
+    - run: ./scripts/heroku-deploy.sh frontend click-fe
+      env:
+        CI: true
