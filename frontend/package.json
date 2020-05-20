@@ -16,7 +16,7 @@
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.0",
     "subscriptions-transport-ws": "^0.9.16",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.3"
   },
   "scripts": {
     "eslint": "eslint --ext .tsx,.ts src",
