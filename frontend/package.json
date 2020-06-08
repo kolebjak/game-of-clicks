@@ -8,7 +8,7 @@
     "apollo-boost": "^0.4.9",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-link-ws": "^1.0.20",
-    "graphql": "^15.0.0",
+    "graphql": "^15.1.0",
     "history": "^4.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
